@@ -9,6 +9,9 @@ if [ -f ${MQTT_PASSWORD_FILE:-'/run/secrets/mqtt_password'} ]; then
   MQTT_PASSWORD=$(cat ${MQTT_PASSWORD_FILE:-'/run/secrets/mqtt_password'})
 fi
 
+MQTT_PASSWORD_MASK=$([ -n "$UNMASK_PASSWORD" ] && echo ${MQTT_PASSWORD} || printf '%s\n' "${MQTT_PASSWORD//?/*}")
+
 echo "Starting rtl_433_mqtt_hass.py..."
-echo "Running: python3 -u /rtl_433_mqtt_hass.py -d -u ${MQTT_USERNAME} -P ${MQTT_PASSWORD} -H ${MQTT_HOST} -D ${DISCOVERY_PREFIX} -R ${RTL_TOPIC}"
-python3 -u /rtl_433_mqtt_hass.py -d -u ${MQTT_USERNAME} -P ${MQTT_PASSWORD} -H ${MQTT_HOST} -D ${DISCOVERY_PREFIX} -R ${RTL_TOPIC}
+echo "Running: python3 -u /rtl_433_mqtt_hass.py ${DEBUG:+'-d'} -u ${MQTT_USERNAME} -P ${MQTT_PASSWORD_MASK} -H ${MQTT_HOST} -D ${DISCOVERY_PREFIX} -R ${RTL_TOPIC}"
+
+python3 -u /rtl_433_mqtt_hass.py ${DEBUG:+'-d'} -u ${MQTT_USERNAME} -P ${MQTT_PASSWORD} -H ${MQTT_HOST} -D ${DISCOVERY_PREFIX} -R ${RTL_TOPIC}
