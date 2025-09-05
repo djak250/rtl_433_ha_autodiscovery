@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   rtl_433_ha_autodiscovery:
     build: .
@@ -10,5 +10,14 @@ services:
       MQTT_HOST: 127.0.0.1
       MQTT_USERNAME: yourUser
       MQTT_PASSWORD: yourPassword
+      # Optionally use secret files
+      # MQTT_USERNAME_FILE: /run/secrets/mqtt_username
+      # MQTT_PASSWORD_FILE: /run/secrets/mqtt_password
       DISCOVERY_PREFIX: homeassistant
       RTL_TOPIC: "rtl_433/+/events"
+# Optional: Configure environment variables as docker secrets
+# secrets:
+#   mqtt_username:
+#     environment: MQTT_USERNAME
+#   mqtt_password:
+#     environment: MQTT_PASSWORD

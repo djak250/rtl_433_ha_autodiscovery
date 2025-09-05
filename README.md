@@ -23,8 +23,8 @@ To install and run:
  | Variable name | Required? |
  |---|---|
  | `MQTT_HOST` | Yes |
- | `MQTT_USERNAME` | Yes |
- | `MQTT_PASSWORD` | Yes |
+ | `MQTT_USERNAME` | Yes, or `MQTT_USERNAME_FILE` |
+ | `MQTT_PASSWORD` | Yes, or `MQTT_PASSWORD_FILE` |
  | `DISCOVERY_PREFIX` | Yes |
  | `RTL_TOPIC` | Yes |
 
