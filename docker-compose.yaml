@@ -13,6 +13,7 @@ services:
       # Optionally use secret files
       # MQTT_USERNAME_FILE: /run/secrets/mqtt_username
       # MQTT_PASSWORD_FILE: /run/secrets/mqtt_password
+      # UNMASK_PASSWORD: "true" # Uncomment to disable password masking in log
       DISCOVERY_PREFIX: homeassistant
       RTL_TOPIC: "rtl_433/+/events"
 # Optional: Configure environment variables as docker secrets
